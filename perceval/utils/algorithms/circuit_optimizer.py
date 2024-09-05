@@ -32,7 +32,7 @@ from perceval.components import ACircuit, Circuit, GenericInterferometer, BS, PS
 from perceval.utils import Matrix, P
 from perceval.utils.logging import logger, channel
 from perceval.serialization import serialize_binary, deserialize_circuit
-
+from collections.abc import Callable
 
 class CircuitOptimizer:
     """
@@ -119,7 +119,7 @@ class CircuitOptimizer:
 
     def optimize_rectangle(self,
                            target: Matrix,
-                           template_component_generator_func: callable[[int], ACircuit] = None,
+                           template_component_generator_func: Callable[[int], ACircuit] = None,
                            phase_at_output: bool = True,
                            allow_error: bool = False,
                            ) -> ACircuit:

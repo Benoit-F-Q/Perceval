@@ -34,6 +34,7 @@ from .linear_circuit import ACircuit, Circuit
 from perceval.utils import InterferometerShape
 from perceval.utils.logging import logger, channel
 
+from collections.abc import Callable
 
 class GenericInterferometer(Circuit):
     r"""Generate a generic interferometer circuit with generic elements and optional phase_shifter layer
@@ -53,10 +54,10 @@ class GenericInterferometer(Circuit):
     """
     def __init__(self,
                  m: int,
-                 fun_gen: callable[[int], ACircuit],
+                 fun_gen: Callable[[int], ACircuit],
                  shape: InterferometerShape = InterferometerShape.RECTANGLE,
                  depth: int = None,
-                 phase_shifter_fun_gen: callable[[int], ACircuit] | None = None,
+                 phase_shifter_fun_gen: Callable[[int], ACircuit] | None = None,
                  phase_at_output: bool = False):
         assert isinstance(shape, InterferometerShape),\
             f"Wrong type for shape, expected InterferometerShape, got {type(shape)}"

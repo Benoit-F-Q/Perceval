@@ -30,7 +30,7 @@ from perceval.utils.algorithms.circuit_optimizer import CircuitOptimizer
 from perceval.utils.algorithms import norm
 from perceval.components import BS, PS, Circuit, GenericInterferometer
 from perceval.utils import P, Matrix
-
+from collections.abc import Callable
 import pytest
 
 
@@ -41,7 +41,7 @@ def _ps(i):
     return PS(P(f"phi_3_{i}"))
 
 
-def _check_optimize(size: int, mzi_func: callable[[int], None], max_eval_per_trial_tested: int = None):
+def _check_optimize(size: int, mzi_func: Callable[[int], None], max_eval_per_trial_tested: int = None):
     if max_eval_per_trial_tested is None:
         circuit_optimizer = CircuitOptimizer()
     else:

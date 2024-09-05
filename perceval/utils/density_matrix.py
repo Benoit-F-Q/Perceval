@@ -31,7 +31,9 @@ import random
 from copy import copy
 from math import comb, sqrt
 
+import numpy
 import numpy as np
+from numpy import array
 from numpy import conj
 from scipy.linalg import eigh
 from scipy.sparse.linalg import LinearOperator, eigsh
@@ -115,7 +117,7 @@ class DensityMatrix:
     :param n_max: optional maximum number of photon if index is not given
     """
     def __init__(self,
-                 mixed_state: np.array | sparray,
+                 mixed_state: numpy.ndarray | sparray,
                  index: FockBasis | None = None,
                  m: int | None = None,
                  n_max: int | None = None,

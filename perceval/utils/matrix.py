@@ -32,7 +32,8 @@ from __future__ import annotations
 import io
 import re
 
-from abc import ABC, abstractmethod, Iterator
+from abc import ABC, abstractmethod
+from collections.abc import Iterator
 from scipy.linalg import sqrtm, block_diag, svd
 import numpy as np
 import sympy as sp

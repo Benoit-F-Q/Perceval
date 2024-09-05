@@ -27,7 +27,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from abc import ABC, Iterable
+from abc import ABC
+from collections.abc import Iterable
 import sympy as sp
 import copy
 

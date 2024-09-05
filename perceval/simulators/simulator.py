@@ -39,7 +39,7 @@ from copy import copy
 from multipledispatch import dispatch
 from numbers import Number
 from scipy.sparse import csc_array, csr_array
-
+from collections.abc import Callable
 
 class Simulator(ISimulator):
     """
@@ -241,7 +241,7 @@ class Simulator(ISimulator):
             return self.probs(input_state[0])
         return _to_bsd(self.evolve(input_state))
 
-    def _probs_svd_generic(self, input_dist, p_threshold, progress_callback: callable | None = None):
+    def _probs_svd_generic(self, input_dist, p_threshold, progress_callback: Callable | None = None):
         decomposed_input = []
         """decomposed input:
         From a SVD = {
@@ -306,7 +306,7 @@ class Simulator(ISimulator):
         res.normalize()
         return res
 
-    def _probs_svd_fast(self, input_dist, p_threshold, progress_callback: callable | None = None):
+    def _probs_svd_fast(self, input_dist, p_threshold, progress_callback: Callable | None = None):
         decomposed_input = []
         """decomposed input:
            From a SVD = {
@@ -373,7 +373,7 @@ class Simulator(ISimulator):
         res.normalize()
         return res
 
-    def probs_svd(self, input_dist: SVDistribution, progress_callback: callable | None = None):
+    def probs_svd(self, input_dist: SVDistribution, progress_callback: Callable | None = None):
         """
         Compute the probability distribution from a SVDistribution input and as well as performance scores
 
@@ -476,7 +476,7 @@ class Simulator(ISimulator):
 
     def evolve_svd(self,
                    svd: SVDistribution | StateVector | BasicState,
-                   progress_callback: callable | None = None) -> dict:
+                   progress_callback: Callable | None = None) -> dict:
         """
         Compute the SVDistribution evolved through a Linear Optical circuit
 
