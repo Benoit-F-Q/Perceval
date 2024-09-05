@@ -94,7 +94,7 @@ class AParametrizedComponent(AComponent):
         return True
 
     @property
-    def params(self) -> iterable[str]:
+    def params(self) -> Iterable[str]:
         """Returns a list of all variable parameter names in the component"""
         return self._params.keys()
 

@@ -71,7 +71,7 @@ class ACircuit(AParametrizedComponent, ABC):
     def compute_unitary(self,
                         assign: dict = None,
                         use_symbolic: bool = False,
-                        use_polarization: optional[bool] = None) -> Matrix:
+                        use_polarization: bool | None = None) -> Matrix:
         """Compute the unitary matrix corresponding to the current circuit
 
         :param use_polarization:
@@ -240,7 +240,7 @@ class ACircuit(AParametrizedComponent, ABC):
         return None
 
     def match(self, pattern: ACircuit, pos: int = None,
-              pattern_pos: int = None, match: Match = None, actual_pos = 0, actual_pattern_pos=0) -> optional[Match]:
+              pattern_pos: int = None, match: Match = None, actual_pos = 0, actual_pattern_pos=0) -> Match | None:
         # the component shape should match
         if pattern.name == "CPLX" or self._m != pattern._m or pos is not None or pattern_pos is not None:
             return None
@@ -559,7 +559,7 @@ class Circuit(ACircuit):
     def compute_unitary(self,
                         use_symbolic: bool = False,
                         assign: dict = None,
-                        use_polarization: optional[bool] = None) -> Matrix:
+                        use_polarization: bool | None = None) -> Matrix:
         r"""Compute the unitary matrix corresponding to the circuit
 
         :param assign:
@@ -787,7 +787,7 @@ class Circuit(ACircuit):
     def match(self, pattern: ACircuit, pos: int = None,
               pattern_pos: int = 0, browse: bool = False,
               match: Match = None,
-              actual_pos: int = None, actual_pattern_pos: int = None, reverse: bool = False) -> optional[Match]:
+              actual_pos: int = None, actual_pattern_pos: int = None, reverse: bool = False) -> Match | None:
         r"""match a sub-circuit at a given position
 
         :param match: the partial match

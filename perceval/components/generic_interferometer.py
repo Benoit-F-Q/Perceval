@@ -56,7 +56,7 @@ class GenericInterferometer(Circuit):
                  fun_gen: callable[[int], ACircuit],
                  shape: InterferometerShape = InterferometerShape.RECTANGLE,
                  depth: int = None,
-                 phase_shifter_fun_gen: optional[callable[[int], ACircuit]] = None,
+                 phase_shifter_fun_gen: callable[[int], ACircuit] | None = None,
                  phase_at_output: bool = False):
         assert isinstance(shape, InterferometerShape),\
             f"Wrong type for shape, expected InterferometerShape, got {type(shape)}"

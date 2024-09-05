@@ -127,7 +127,7 @@ class ProbabilityDistribution(defaultdict, ABC):
 class SVDistribution(ProbabilityDistribution):
     r"""Time-Independent Probabilistic distribution of StateVectors
     """
-    def __init__(self, sv: optional[BasicState, StateVector, dict] = None):
+    def __init__(self, sv: BasicState | StateVector | dict | None = None):
         super().__init__()
         self._n_max = 0
         self._m = None
@@ -261,7 +261,7 @@ def anonymize_annotations(svd: SVDistribution, annot_tag: str = "a"):
 class BSDistribution(ProbabilityDistribution):
     r"""Time-Independent probabilistic distribution of Basic States
     """
-    def __init__(self, d: optional[BasicState, dict] = None):
+    def __init__(self, d: BasicState | dict | None = None):
         super().__init__()
         self._m = None
         if d is not None:
@@ -332,7 +332,7 @@ class BSDistribution(ProbabilityDistribution):
 class BSCount(defaultdict):
     r"""Container that counts basic state events
     """
-    def __init__(self, d: optional[dict] = None):
+    def __init__(self, d: dict | None = None):
         super().__init__(int)
         if d is not None:
             for k, v in d.items():

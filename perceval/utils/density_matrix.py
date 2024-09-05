@@ -278,7 +278,7 @@ class DensityMatrix:
                 continue
         return SVDistribution(dic)
 
-    def to_svd(self, threshold: optional[float] = None, batch_size: int = 1):
+    def to_svd(self, threshold: float | None = None, batch_size: int = 1):
         """
             Gives back an SVDistribution from the density_matrix
 
@@ -360,7 +360,7 @@ class DensityMatrix:
         else:
             return density_matrix_tensor_product(other, self)
 
-    def remove_low_amplitude(self, threshold: optional[float] = None):
+    def remove_low_amplitude(self, threshold: float | None = None):
         """
         Remove the lines and column where the amplitude is below a certain threshold
         """

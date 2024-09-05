@@ -57,7 +57,7 @@ class LocalJob(Job):
         self._user_cb = None
         self._cancel_requested = False
 
-    def set_progress_callback(self, callback: callable):  # Signature must be (float, optional[str])
+    def set_progress_callback(self, callback: callable):  # Signature must be (float, str | None)
         self._user_cb = callback
 
     @property
@@ -67,7 +67,7 @@ class LocalJob(Job):
             self._status.stop_run()
         return self._status
 
-    def _progress_cb(self, progress: float, phase: optional[str] = None):
+    def _progress_cb(self, progress: float, phase: str | None = None):
         self._status.update_progress(progress, phase)
         if self._cancel_requested:
             return {'cancel_requested': True}

@@ -241,7 +241,7 @@ class Simulator(ISimulator):
             return self.probs(input_state[0])
         return _to_bsd(self.evolve(input_state))
 
-    def _probs_svd_generic(self, input_dist, p_threshold, progress_callback: optional[callable] = None):
+    def _probs_svd_generic(self, input_dist, p_threshold, progress_callback: callable | None = None):
         decomposed_input = []
         """decomposed input:
         From a SVD = {
@@ -306,7 +306,7 @@ class Simulator(ISimulator):
         res.normalize()
         return res
 
-    def _probs_svd_fast(self, input_dist, p_threshold, progress_callback: optional[callable] = None):
+    def _probs_svd_fast(self, input_dist, p_threshold, progress_callback: callable | None = None):
         decomposed_input = []
         """decomposed input:
            From a SVD = {
@@ -373,7 +373,7 @@ class Simulator(ISimulator):
         res.normalize()
         return res
 
-    def probs_svd(self, input_dist: SVDistribution, progress_callback: optional[callable] = None):
+    def probs_svd(self, input_dist: SVDistribution, progress_callback: callable | None = None):
         """
         Compute the probability distribution from a SVDistribution input and as well as performance scores
 
