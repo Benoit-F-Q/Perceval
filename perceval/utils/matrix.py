@@ -32,7 +32,7 @@ from __future__ import annotations
 import io
 import re
 
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, Iterator
 from scipy.linalg import sqrtm, block_diag, svd
 import numpy as np
 import sympy as sp
@@ -220,7 +220,7 @@ class Matrix(ABC):
         return self
 
     @staticmethod
-    def _read(seqline: iterator[str]) -> Matrix:
+    def _read(seqline: Iterator[str]) -> Matrix:
         """read a matrix from file or a string sequence"""
         rows = []
         n = None
