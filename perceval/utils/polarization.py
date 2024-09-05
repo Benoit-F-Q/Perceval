@@ -47,7 +47,7 @@ class Polarization:
     :raise: `ValueError` if the parameters are out of range, or invalid
     """
     def __init__(self,
-                 v: union[str, any, tuple[any, any]]):
+                 v: str | any | tuple[any, any]):
         if isinstance(v, str):
             if v == "H":
                 self.theta_phi = (0, 0)

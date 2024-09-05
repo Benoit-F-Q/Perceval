@@ -131,7 +131,7 @@ class CatalogItem(ABC):
         """Build the component as processor
 
         kwargs:
-            * backend(union[ABackend, str]): Name or instance of a simulation backend. Default "SLOS"
+            * backend(ABackend | str): Name or instance of a simulation backend. Default "SLOS"
 
         :return: A Perceval processor
         """

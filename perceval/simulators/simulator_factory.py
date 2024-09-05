@@ -45,8 +45,8 @@ class SimulatorFactory:
     """
 
     @staticmethod
-    def build(circuit: union[ACircuit, Processor, list],
-              backend: union[ABackend, str] = None,
+    def build(circuit: ACircuit | Processor | list,
+              backend: ABackend | str = None,
               **kwargs) -> ISimulator:
         """
         :param circuit: The optical circuit to build the simulation layers around.

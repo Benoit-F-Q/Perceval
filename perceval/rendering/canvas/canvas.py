@@ -136,7 +136,7 @@ class Canvas(ABC):
                          **args)
 
     def add_mpath(self,
-                  points: list[union[float, str]],
+                  points: list[float | str],
                   stroke: str = "black",
                   stroke_width: float = 1,
                   fill: str = None,

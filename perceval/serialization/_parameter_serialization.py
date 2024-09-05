@@ -30,7 +30,7 @@ from perceval.utils import Parameter, Expression
 from perceval.serialization import _schema_circuit_pb2 as pb
 
 
-def serialize_parameter(param: union[Parameter, float]):
+def serialize_parameter(param: Parameter | float):
     pb_param = pb.Parameter()
     if isinstance(param, float):
         pb_param.real_value = param

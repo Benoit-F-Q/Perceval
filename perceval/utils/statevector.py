@@ -46,7 +46,7 @@ BasicState = xq.FockState
 StateVector = xq.StateVector
 
 
-def allstate_iterator(input_state: union[BasicState, StateVector], mask=None) -> BasicState:
+def allstate_iterator(input_state: BasicState | StateVector, mask=None) -> BasicState:
     """Iterator on all possible output states compatible with mask generating StateVector
 
     :param input_state: a given input state vector
@@ -79,7 +79,7 @@ def max_photon_state_iterator(m: int, n_max: int):
             yield output_state
 
 
-def tensorproduct(states: list[union[StateVector, BasicState]]):
+def tensorproduct(states: list[StateVector | BasicState]):
     r""" Computes states[0] * states[1] * ...
     """
     if len(states) == 1:

@@ -127,7 +127,7 @@ class Source:
         return res
 
     @staticmethod
-    def _add(plist: list, annotations: union[int, list], probability: float):
+    def _add(plist: list, annotations: int | list, probability: float):
         # Add an annotation list (or a number of unannotated photons) and its probability to the in/out
         # parameter `plist`
         if probability > 0:

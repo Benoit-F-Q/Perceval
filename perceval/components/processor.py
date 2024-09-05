@@ -59,14 +59,14 @@ class Processor(AProcessor):
                   Note: source and noise are mutually exclusive
     :param name: a textual name for the processor (defaults to "Local processor")
     """
-    def __init__(self, backend: union[ABackend, str], m_circuit: union[int, ACircuit] = None, source: Source = None,
+    def __init__(self, backend: ABackend | str, m_circuit: int | ACircuit = None, source: Source = None,
                  noise: NoiseModel = None, name: str = "Local processor"):
         super().__init__()
         self._init_backend(backend)
         self._init_circuit(m_circuit)
         self._init_noise(noise, source)
         self.name = name
-        self._inputs_map: union[SVDistribution, None] = None
+        self._inputs_map: SVDistribution | None = None
         self._simulator = None
 
     def _init_noise(self, noise: NoiseModel, source: Source):
@@ -96,7 +96,7 @@ class Processor(AProcessor):
             self._generate_noisy_input()
 
     @property
-    def source_distribution(self) -> union[SVDistribution, None]:
+    def source_distribution(self) -> SVDistribution | None:
         r"""
         Retrieve the computed input distribution.
         :return: the input SVDistribution if `with_input` was called previously, otherwise None.

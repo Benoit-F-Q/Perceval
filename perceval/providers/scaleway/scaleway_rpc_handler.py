@@ -188,7 +188,7 @@ class RPCHandler:
     def __build_endpoint(self, endpoint) -> str:
         return f"{self._url}{endpoint}"
 
-    def __to_date(self, date: union[str, None]) -> union[float, None]:
+    def __to_date(self, date: str | None) -> float | None:
         if not date or date == "":
             return None
 
@@ -198,7 +198,7 @@ class RPCHandler:
 
         return datetime.fromisoformat(date).timestamp()
 
-    def __get_duration(self, start_time: union[float, None]) -> union[int, None]:
+    def __get_duration(self, start_time: float | None) -> int | None:
         return (
             timedelta(seconds=time.time() - start_time).seconds if start_time else None
         )

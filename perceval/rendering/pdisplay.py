@@ -217,7 +217,7 @@ def pdisplay_analyzer(analyzer: Analyzer, output_format: Format = Format.TEXT, n
                     tablefmt=_TABULATE_FMT_MAPPING[output_format])
 
 
-def pdisplay_state_distrib(sv: union[StateVector, ProbabilityDistribution, BSCount],
+def pdisplay_state_distrib(sv: StateVector | ProbabilityDistribution | BSCount,
                            output_format: Format = Format.TEXT, nsimplify=True, precision=1e-6, max_v=None, sort=True):
     """
     :meta private:

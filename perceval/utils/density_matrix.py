@@ -115,10 +115,10 @@ class DensityMatrix:
     :param n_max: optional maximum number of photon if index is not given
     """
     def __init__(self,
-                 mixed_state: union[np.array, sparray],
-                 index: optional[FockBasis] = None,
-                 m: optional[int] = None,
-                 n_max: optional[int] = None,
+                 mixed_state: np.array | sparray,
+                 index: FockBasis | None = None,
+                 m: int | None = None,
+                 n_max: int | None = None,
                  check_hermitian: bool = True,
                  precision: bool = 1e-6):
         """
@@ -154,7 +154,7 @@ class DensityMatrix:
         self.set_index(index)  # index construction
 
     @staticmethod
-    def from_svd(svd: union[SVDistribution, StateVector, BasicState], index: optional[FockBasis] = None):
+    def from_svd(svd: SVDistribution | StateVector | BasicState, index: FockBasis | None = None):
         """
         Construct a Density matrix from a SVDistribution.
 
@@ -399,7 +399,7 @@ class DensityMatrix:
             output.append(state)
         return output
 
-    def measure(self, modes: union[list[int], int]):
+    def measure(self, modes: list[int] | int):
         """
         Makes a measure on a list of modes.
         :param modes: a list of integer for the modes you want to measure
@@ -512,7 +512,7 @@ class DensityMatrix:
                                                                       p**n_photon_loss)
         return operators
 
-    def apply_loss(self, modes: union[int, list], prob: float):
+    def apply_loss(self, modes: int | list, prob: float):
         """
         Apply a loss on some mode according to some probability of losing a photon
         Everything works like if the mode was connected to some virtual mode with a beam splitter of reflectivity prob

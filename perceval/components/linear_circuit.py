@@ -107,14 +107,14 @@ class ACircuit(AParametrizedComponent, ABC):
         params = {name: Parameter(name) for name in self._params.keys()}
         return type(self)(**params).U
 
-    def add(self, port_range: union[int, tuple[int, ...]],
+    def add(self, port_range: int | tuple[int, ...],
             component: ACircuit, merge: bool = None) -> Circuit:
         return Circuit(self._m).add(0, self).add(port_range, component, merge)
 
     def __setitem__(self, key, value):
         self._params[key] = value
 
-    def __ifloordiv__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
+    def __ifloordiv__(self, component: ACircuit | tuple[int, ACircuit]) -> Circuit:
         r"""Shortcut for ``.add``
 
         >>> c //= b       # equivalent to: `c.add((0:b.n),b)`
@@ -131,7 +131,7 @@ class ACircuit(AParametrizedComponent, ABC):
             pos = 0
         return self.add(tuple(range(pos, component._m+pos)), component, merge=True)
 
-    def __floordiv__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
+    def __floordiv__(self, component: ACircuit | tuple[int, ACircuit]) -> Circuit:
         r"""Build a new circuit by adding `component` to the current circuit
 
         >>> c = a // b   # equivalent to: `Circuit(n) // self // component`
@@ -188,8 +188,8 @@ class ACircuit(AParametrizedComponent, ABC):
         return None
 
     @staticmethod
-    def _match_unitary(circuit: union[ACircuit, Matrix], pattern: ACircuit, match: Match = None,
-                       actual_pos: optional[int] = 0, actual_pattern_pos: optional[int] = 0) -> optional[Match]:
+    def _match_unitary(circuit: ACircuit | Matrix, pattern: ACircuit, match: Match = None,
+                       actual_pos: int | None = 0, actual_pattern_pos: int | None = 0) -> Match | None:
         r"""match an elementary component by finding if possible the corresponding parameters.
 
         :param pattern: the circuit to match
@@ -436,7 +436,7 @@ class Circuit(ACircuit):
         from perceval.components.unitary_components import Barrier
         return self.add(0, Barrier(self._m))
 
-    def __imatmul__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
+    def __imatmul__(self, component: ACircuit | tuple[int, ACircuit]) -> Circuit:
         r"""Add a barrier and a `component` to the current circuit
 
         :param component: the component to add, or a tuple (first_port, component)
@@ -445,7 +445,7 @@ class Circuit(ACircuit):
         self //= component
         return self
 
-    def __matmul__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
+    def __matmul__(self, component: ACircuit | tuple[int, ACircuit]) -> Circuit:
         r"""Build a new circuit by adding a barrier and then `component`
         to the current circuit
 
@@ -455,7 +455,7 @@ class Circuit(ACircuit):
         c @= component
         return c
 
-    def add(self, port_range: union[int, tuple[int, ...]],
+    def add(self, port_range: int | tuple[int, ...],
             component: ACircuit, merge: bool = False, x_grid: int = None) -> Circuit:
         r"""Add a component in a circuit
 
@@ -581,9 +581,9 @@ class Circuit(ACircuit):
     @deprecated(version="0.10.0", reason="Construct a GenericInterferometer object instead")
     def generic_interferometer(m: int,
                                fun_gen: callable[[int], ACircuit],
-                               shape: union[str, InterferometerShape] = InterferometerShape.RECTANGLE,
+                               shape: str | InterferometerShape = InterferometerShape.RECTANGLE,
                                depth: int = None,
-                               phase_shifter_fun_gen: optional[callable[[int], ACircuit]] = None,
+                               phase_shifter_fun_gen: callable[[int], ACircuit] | None = None,
                                phase_at_output: bool = False) -> Circuit:
         from .generic_interferometer import GenericInterferometer  # Import in method to avoir circular dependency
         if isinstance(shape, str):
@@ -593,7 +593,7 @@ class Circuit(ACircuit):
                 raise ValueError(f"Unknown interferometer shape: {shape}")
         return GenericInterferometer(m, fun_gen, shape, depth, phase_shifter_fun_gen, phase_at_output)
 
-    def copy(self, subs: union[dict,list] = None):
+    def copy(self, subs: dict | list = None):
         nc = copy.deepcopy(self)
         nc._params = {}
         nc._components = []
@@ -605,7 +605,7 @@ class Circuit(ACircuit):
     def decomposition(U: MatrixN,
                       component: ACircuit,
                       phase_shifter_fn: callable[[int], ACircuit] = None,
-                      shape: union[str, InterferometerShape] = InterferometerShape.TRIANGLE,
+                      shape: str | InterferometerShape = InterferometerShape.TRIANGLE,
                       permutation: type[ACircuit] = None,
                       inverse_v: bool = False,
                       inverse_h: bool = False,

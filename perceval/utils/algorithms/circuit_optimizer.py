@@ -84,7 +84,7 @@ class CircuitOptimizer:
         self._max_eval_per_trial = value
 
     def optimize(self,
-                 target: union[ACircuit, Matrix],
+                 target: ACircuit | Matrix,
                  template: ACircuit
                  ) -> tuple[ACircuit, float]:
         """

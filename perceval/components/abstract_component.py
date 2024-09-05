@@ -116,7 +116,7 @@ class AParametrizedComponent(AComponent):
 
     def _set_parameter(self,
                        name: str,
-                       p: union[Parameter, float],
+                       p: Parameter | float,
                        min_v: float,
                        max_v: float,
                        periodic: bool = True) -> Parameter:
@@ -173,7 +173,7 @@ class AParametrizedComponent(AComponent):
     def get_variables(self):
         return {}
 
-    def copy(self, subs: union[dict, list] = None):
+    def copy(self, subs: dict | list = None):
         nc = copy.deepcopy(self)
 
         if subs is None:

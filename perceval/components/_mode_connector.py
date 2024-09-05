@@ -33,7 +33,7 @@ from .unitary_components import PERM
 
 
 class UnavailableModeException(Exception):
-    def __init__(self, mode: union[int, list[int]], reason: str = None):
+    def __init__(self, mode: int | list[int], reason: str = None):
         because = ''
         if reason:
             because = f' because: {reason}'
@@ -41,7 +41,7 @@ class UnavailableModeException(Exception):
 
 
 class InvalidMappingException(Exception):
-    def __init__(self, mapping: union[dict, list], reason: str = None):
+    def __init__(self, mapping: dict | list, reason: str = None):
         because = ''
         if reason:
             because = f' because: {reason}'

@@ -54,17 +54,17 @@ class AProcessor(ABC):
         self.name: str = ""
         self._parameters: dict[str, any] = {}
 
-        self._noise: union[NoiseModel, None] = None
+        self._noise: NoiseModel | None = None
 
         self._thresholded_output: bool = False
-        self._min_detected_photons: union[int, None] = None
+        self._min_detected_photons: int | None = None
 
         self._reset_circuit()
 
     def _reset_circuit(self):
         self._in_ports: dict = {}
         self._out_ports: dict = {}
-        self._postselect: union[PostSelect, None] = None
+        self._postselect: PostSelect | None = None
 
         self._is_unitary: bool = True
         self._has_td: bool = False
@@ -189,7 +189,7 @@ class AProcessor(ABC):
             return self._postselect(state)
         return True
 
-    def copy(self, subs: union[dict, list] = None):
+    def copy(self, subs: dict | list = None):
         logger.debug(f"Copy processor {self.name}", channel.general)
         new_proc = copy.copy(self)
         new_proc._components = []

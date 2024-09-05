@@ -84,8 +84,8 @@ class Stepper(ISimulator):
                 self._backend.set_input_state(input_state)
                 mapping_input_output[input_state] = {output_state: self._backend.prob_amplitude(output_state)
                                                      for output_state in allstate_iterator(input_state)}
-            self._result_dict[key].update(mapping_input_output)  # union of the dictionaries
-            self._result_dict[key]['_set'] |= sub_input_state  # union of sets
+            self._result_dict[key].update(mapping_input_output)  # Union of the dictionaries
+            self._result_dict[key]['_set'] |= sub_input_state  # Union of sets
         # now rebuild the new state vector
         nsv = StateVector()
         # May be faster in c++ (impossible to use comprehension here due to successive additions)
@@ -113,7 +113,7 @@ class Stepper(ISimulator):
         assert self._out.m == input_state.m, "Loss channels cannot be used with state amplitude"
         return self._out
 
-    def compile(self, input_states: union[BasicState, StateVector]) -> bool:
+    def compile(self, input_states: BasicState | StateVector) -> bool:
         if isinstance(input_states, BasicState):
             sv = StateVector(input_states)
         else:

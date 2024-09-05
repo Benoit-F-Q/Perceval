@@ -437,7 +437,7 @@ class Simulator(ISimulator):
                 'physical_perf': self._physical_perf,
                 'logical_perf': self._logical_perf * logical_perf_coeff}
 
-    def evolve(self, input_state: union[BasicState, StateVector]) -> StateVector:
+    def evolve(self, input_state: BasicState | StateVector) -> StateVector:
         """
         Evolve a state through the circuit
 
@@ -475,8 +475,8 @@ class Simulator(ISimulator):
         return result_sv
 
     def evolve_svd(self,
-                   svd: union[SVDistribution, StateVector, BasicState],
-                   progress_callback: optional[callable] = None) -> dict:
+                   svd: SVDistribution | StateVector | BasicState,
+                   progress_callback: callable | None = None) -> dict:
         """
         Compute the SVDistribution evolved through a Linear Optical circuit
 
