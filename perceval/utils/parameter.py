@@ -172,7 +172,7 @@ class Parameter:
                                                        self._max is not None and ", max_v="+str(self._max) or "")
 
     @property
-    def bounds(self) -> Tuple[float, float]:
+    def bounds(self) -> tuple[float, float]:
         r"""Minimal and maximal values for the parameter
         """
         return self._min, self._max

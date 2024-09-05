@@ -38,7 +38,7 @@ class DisplayConfig:
     _selected_skin = PhysSkin  # Default skin is PhysSkin
 
     @staticmethod
-    def select_skin(skin: Type[ASkin]) -> None:
+    def select_skin(skin: type[ASkin]) -> None:
         DisplayConfig._selected_skin = skin
 
     @staticmethod

@@ -71,7 +71,7 @@ class ACircuit(AParametrizedComponent, ABC):
     def compute_unitary(self,
                         assign: dict = None,
                         use_symbolic: bool = False,
-                        use_polarization: Optional[bool] = None) -> Matrix:
+                        use_polarization: optional[bool] = None) -> Matrix:
         """Compute the unitary matrix corresponding to the current circuit
 
         :param use_polarization:
@@ -107,14 +107,14 @@ class ACircuit(AParametrizedComponent, ABC):
         params = {name: Parameter(name) for name in self._params.keys()}
         return type(self)(**params).U
 
-    def add(self, port_range: Union[int, Tuple[int, ...]],
+    def add(self, port_range: union[int, tuple[int, ...]],
             component: ACircuit, merge: bool = None) -> Circuit:
         return Circuit(self._m).add(0, self).add(port_range, component, merge)
 
     def __setitem__(self, key, value):
         self._params[key] = value
 
-    def __ifloordiv__(self, component: Union[ACircuit, Tuple[int, ACircuit]]) -> Circuit:
+    def __ifloordiv__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
         r"""Shortcut for ``.add``
 
         >>> c //= b       # equivalent to: `c.add((0:b.n),b)`
@@ -131,7 +131,7 @@ class ACircuit(AParametrizedComponent, ABC):
             pos = 0
         return self.add(tuple(range(pos, component._m+pos)), component, merge=True)
 
-    def __floordiv__(self, component: Union[ACircuit, Tuple[int, ACircuit]]) -> Circuit:
+    def __floordiv__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
         r"""Build a new circuit by adding `component` to the current circuit
 
         >>> c = a // b   # equivalent to: `Circuit(n) // self // component`
@@ -188,8 +188,8 @@ class ACircuit(AParametrizedComponent, ABC):
         return None
 
     @staticmethod
-    def _match_unitary(circuit: Union[ACircuit, Matrix], pattern: ACircuit, match: Match = None,
-                       actual_pos: Optional[int] = 0, actual_pattern_pos: Optional[int] = 0) -> Optional[Match]:
+    def _match_unitary(circuit: union[ACircuit, Matrix], pattern: ACircuit, match: Match = None,
+                       actual_pos: optional[int] = 0, actual_pattern_pos: optional[int] = 0) -> optional[Match]:
         r"""match an elementary component by finding if possible the corresponding parameters.
 
         :param pattern: the circuit to match
@@ -240,7 +240,7 @@ class ACircuit(AParametrizedComponent, ABC):
         return None
 
     def match(self, pattern: ACircuit, pos: int = None,
-              pattern_pos: int = None, match: Match = None, actual_pos = 0, actual_pattern_pos=0) -> Optional[Match]:
+              pattern_pos: int = None, match: Match = None, actual_pos = 0, actual_pattern_pos=0) -> optional[Match]:
         # the component shape should match
         if pattern.name == "CPLX" or self._m != pattern._m or pos is not None or pattern_pos is not None:
             return None
@@ -301,7 +301,7 @@ class Circuit(ACircuit):
             for range_comp, comp in c:
                 yield tuple(pos + r[0] for pos in range_comp), comp
 
-    def getitem(self, idx: Tuple[int, int], only_parameterized: bool=False) -> ACircuit:
+    def getitem(self, idx: tuple[int, int], only_parameterized: bool=False) -> ACircuit:
         """
         Direct access to components of the circuit
         :param idx: index of the component as (row, col)
@@ -375,7 +375,7 @@ class Circuit(ACircuit):
                         raise ValueError("x_grid values are not consistent")
                     x_grids[port] = component._x_grid
 
-    def group_components_by_xgrid(self) -> List[List[Tuple[int], ACircuit]]:
+    def group_components_by_xgrid(self) -> list[list[tuple[int], ACircuit]]:
         r"""Group the components according to their x_grid to facilitate rendering
 
         Grouping rule is simple: components without x_grid are singleton, components with similar x_grid are grouped
@@ -436,7 +436,7 @@ class Circuit(ACircuit):
         from perceval.components.unitary_components import Barrier
         return self.add(0, Barrier(self._m))
 
-    def __imatmul__(self, component: Union[ACircuit, Tuple[int, ACircuit]]) -> Circuit:
+    def __imatmul__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
         r"""Add a barrier and a `component` to the current circuit
 
         :param component: the component to add, or a tuple (first_port, component)
@@ -445,7 +445,7 @@ class Circuit(ACircuit):
         self //= component
         return self
 
-    def __matmul__(self, component: Union[ACircuit, Tuple[int, ACircuit]]) -> Circuit:
+    def __matmul__(self, component: union[ACircuit, tuple[int, ACircuit]]) -> Circuit:
         r"""Build a new circuit by adding a barrier and then `component`
         to the current circuit
 
@@ -455,7 +455,7 @@ class Circuit(ACircuit):
         c @= component
         return c
 
-    def add(self, port_range: Union[int, Tuple[int, ...]],
+    def add(self, port_range: union[int, tuple[int, ...]],
             component: ACircuit, merge: bool = False, x_grid: int = None) -> Circuit:
         r"""Add a component in a circuit
 
@@ -559,7 +559,7 @@ class Circuit(ACircuit):
     def compute_unitary(self,
                         use_symbolic: bool = False,
                         assign: dict = None,
-                        use_polarization: Optional[bool] = None) -> Matrix:
+                        use_polarization: optional[bool] = None) -> Matrix:
         r"""Compute the unitary matrix corresponding to the circuit
 
         :param assign:
@@ -580,10 +580,10 @@ class Circuit(ACircuit):
     @staticmethod
     @deprecated(version="0.10.0", reason="Construct a GenericInterferometer object instead")
     def generic_interferometer(m: int,
-                               fun_gen: Callable[[int], ACircuit],
-                               shape: Union[str, InterferometerShape] = InterferometerShape.RECTANGLE,
+                               fun_gen: callable[[int], ACircuit],
+                               shape: union[str, InterferometerShape] = InterferometerShape.RECTANGLE,
                                depth: int = None,
-                               phase_shifter_fun_gen: Optional[Callable[[int], ACircuit]] = None,
+                               phase_shifter_fun_gen: optional[callable[[int], ACircuit]] = None,
                                phase_at_output: bool = False) -> Circuit:
         from .generic_interferometer import GenericInterferometer  # Import in method to avoir circular dependency
         if isinstance(shape, str):
@@ -593,7 +593,7 @@ class Circuit(ACircuit):
                 raise ValueError(f"Unknown interferometer shape: {shape}")
         return GenericInterferometer(m, fun_gen, shape, depth, phase_shifter_fun_gen, phase_at_output)
 
-    def copy(self, subs: Union[dict,list] = None):
+    def copy(self, subs: union[dict,list] = None):
         nc = copy.deepcopy(self)
         nc._params = {}
         nc._components = []
@@ -604,9 +604,9 @@ class Circuit(ACircuit):
     @staticmethod
     def decomposition(U: MatrixN,
                       component: ACircuit,
-                      phase_shifter_fn: Callable[[int], ACircuit] = None,
-                      shape: Union[str, InterferometerShape] = InterferometerShape.TRIANGLE,
-                      permutation: Type[ACircuit] = None,
+                      phase_shifter_fn: callable[[int], ACircuit] = None,
+                      shape: union[str, InterferometerShape] = InterferometerShape.TRIANGLE,
+                      permutation: type[ACircuit] = None,
                       inverse_v: bool = False,
                       inverse_h: bool = False,
                       constraints=None,
@@ -714,7 +714,7 @@ class Circuit(ACircuit):
                     assert r_self[-1] < r[0] or r_self[0] > r[-1], \
                            "circuit structure does not match - missing %s at %s" % (str(c), str(r))
 
-    def find_subnodes(self, pos: int) -> List[int]:
+    def find_subnodes(self, pos: int) -> list[int]:
         r"""find the subnodes of a given component (Udef for pos==None)
 
         :param pos: the position of the current node
@@ -737,7 +737,7 @@ class Circuit(ACircuit):
             subnodes.append(found and (p, idx) or None)
         return subnodes
 
-    def isolate(self, lc: List[int], name=None, color=None):
+    def isolate(self, lc: list[int], name=None, color=None):
         nlc = []
         rset = set()
         for idx in lc:
@@ -787,7 +787,7 @@ class Circuit(ACircuit):
     def match(self, pattern: ACircuit, pos: int = None,
               pattern_pos: int = 0, browse: bool = False,
               match: Match = None,
-              actual_pos: int = None, actual_pattern_pos: int = None, reverse: bool = False) -> Optional[Match]:
+              actual_pos: int = None, actual_pattern_pos: int = None, reverse: bool = False) -> optional[Match]:
         r"""match a sub-circuit at a given position
 
         :param match: the partial match

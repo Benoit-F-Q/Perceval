@@ -31,7 +31,7 @@ import perceval.components.unitary_components as comp
 from perceval.components.linear_circuit import ACircuit, Circuit
 
 
-def simplify(circuit: Union[list, ACircuit], m: int=None, display: bool = False) -> Union[list, Circuit]:
+def simplify(circuit: union[list, ACircuit], m: int=None, display: bool = False) -> union[list, Circuit]:
     r"""
     Tries to simplify a circuit when simplifications are possible
 

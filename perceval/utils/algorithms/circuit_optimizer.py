@@ -84,9 +84,9 @@ class CircuitOptimizer:
         self._max_eval_per_trial = value
 
     def optimize(self,
-                 target: Union[ACircuit, Matrix],
+                 target: union[ACircuit, Matrix],
                  template: ACircuit
-                 ) -> Tuple[ACircuit, float]:
+                 ) -> tuple[ACircuit, float]:
         """
         Optimize a template circuit unitary's fidelity with a target matrix or circuit.
 
@@ -119,7 +119,7 @@ class CircuitOptimizer:
 
     def optimize_rectangle(self,
                            target: Matrix,
-                           template_component_generator_func: Callable[[int], ACircuit] = None,
+                           template_component_generator_func: callable[[int], ACircuit] = None,
                            phase_at_output: bool = True,
                            allow_error: bool = False,
                            ) -> ACircuit:

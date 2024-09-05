@@ -82,7 +82,7 @@ def statevector_to_array(sv: StateVector, index: dict):
     return vector
 
 
-def array_to_statevector(vector: Union[np.ndarray, sparray], reverse_index: list):
+def array_to_statevector(vector: union[np.ndarray, sparray], reverse_index: list):
     """
     translate an array in a StateVector
     :param vector: an array
@@ -98,7 +98,7 @@ def array_to_statevector(vector: Union[np.ndarray, sparray], reverse_index: list
     return sv
 
 
-def is_hermitian(matrix: Union[sparray, np.ndarray]) -> bool:
+def is_hermitian(matrix: union[sparray, np.ndarray]) -> bool:
 
     n, m = matrix.shape
 

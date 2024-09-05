@@ -61,7 +61,7 @@ class StateGenerator:
         else:
             raise ValueError("Only use RAW, DUAL_RAIL or POLARIZATION encoding.")
 
-    def logical_state(self, state: List[int]):
+    def logical_state(self, state: list[int]):
         """
         Generate a StateVector from a list of logical state
 

@@ -104,7 +104,7 @@ class Matrix(ABC):
         return MatrixN(np.eye(n, dtype=complex))
 
     @staticmethod
-    def zeros(shape: Tuple[int, int], use_symbolic: bool = False) -> Matrix:
+    def zeros(shape: tuple[int, int], use_symbolic: bool = False) -> Matrix:
         """Generate an empty matrix
 
         :param shape: 2D shape of the matrix
@@ -140,7 +140,7 @@ class Matrix(ABC):
         pass
 
     @staticmethod
-    def random_unitary(n: int, parameters: Optional[Union[np.ndarray, list]] = None) -> MatrixN:
+    def random_unitary(n: int, parameters: optional[union[np.ndarray, list]] = None) -> MatrixN:
         r"""static method generating a random unitary matrix
 
         :param n: size of the Matrix
@@ -156,7 +156,7 @@ class Matrix(ABC):
             return Matrix._unitarize_matrix(n, u)
 
     @staticmethod
-    def parametrized_unitary(n: int, parameters: Union[np.ndarray,list]) -> MatrixN:
+    def parametrized_unitary(n: int, parameters: union[np.ndarray,list]) -> MatrixN:
         r"""static method generating a parametrized unitary matrix
 
         :param n: size of the Matrix
@@ -220,7 +220,7 @@ class Matrix(ABC):
         return self
 
     @staticmethod
-    def _read(seqline: Iterator[str]) -> Matrix:
+    def _read(seqline: iterator[str]) -> Matrix:
         """read a matrix from file or a string sequence"""
         rows = []
         n = None

@@ -131,7 +131,7 @@ class CatalogItem(ABC):
         """Build the component as processor
 
         kwargs:
-            * backend(Union[ABackend, str]): Name or instance of a simulation backend. Default "SLOS"
+            * backend(union[ABackend, str]): Name or instance of a simulation backend. Default "SLOS"
 
         :return: A Perceval processor
         """
@@ -158,7 +158,7 @@ class Catalog:
             if isinstance(obj, CatalogItem):
                 self._items[obj.name] = obj
 
-    def list(self) -> List[str]:
+    def list(self) -> list[str]:
         return list(self._items.keys())
 
     def __contains__(self, item: str) -> bool:

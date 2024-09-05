@@ -58,7 +58,7 @@ def deserialize_float(floatstring):
     return float(floatstring)
 
 
-def deserialize_matrix(pb_mat: Union[str, pb.Matrix]) -> Matrix:
+def deserialize_matrix(pb_mat: union[str, pb.Matrix]) -> Matrix:
     if not isinstance(pb_mat, pb.Matrix):
         pb_binary_repr = pb_mat
         pb_mat = pb.Matrix()
@@ -79,7 +79,7 @@ def matrix_from_file(filepath: str) -> Matrix:
         return deserialize_matrix(f.read())
 
 
-def deserialize_circuit(pb_circ: Union[str, bytes, pb.Circuit]) -> Circuit:
+def deserialize_circuit(pb_circ: union[str, bytes, pb.Circuit]) -> Circuit:
     if not isinstance(pb_circ, pb.Circuit):
         pb_binary_repr = pb_circ
         pb_circ = pb.Circuit()

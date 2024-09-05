@@ -53,7 +53,7 @@ class NoiseModel:
                  phase_imprecision: float = None
                  ):
         # Source parameters
-        self._params: Dict[str, AValidatedParam] = {}
+        self._params: dict[str, AValidatedParam] = {}
         self._add_param(ValidatedFloat("brightness", brightness, 0, 1, 1))
         self._add_param(ValidatedFloat("indistinguishability", indistinguishability, 0, 1, 1))
         self._add_param(ValidatedFloat("g2", g2, 0, 1, 0))

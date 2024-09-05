@@ -33,8 +33,8 @@ from perceval.utils import Matrix, P, global_params
 from scipy import optimize as scpy_optimize
 
 
-def _min_fnc(c: ACircuit, params: List[P], x: List[int], v: Optional[Matrix],
-             f: Callable[[Matrix, Matrix], float], sign: float):
+def _min_fnc(c: ACircuit, params: list[P], x: list[int], v: optional[Matrix],
+             f: callable[[Matrix, Matrix], float], sign: float):
     for idx, p in enumerate(x):
         params[idx].set_value(p)
     value = f(c.compute_unitary(use_symbolic=False), v)
@@ -49,8 +49,8 @@ def _stop_criterion(f, f0, precision, accept):
 
 
 def optimize(c: ACircuit,
-             v: Optional[Matrix],
-             f: Callable[[Matrix, Matrix], float],
+             v: optional[Matrix],
+             f: callable[[Matrix, Matrix], float],
              niter: int = 20,
              target_opt: float = 0,
              precision: float = None,

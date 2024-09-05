@@ -57,7 +57,7 @@ class LossSimulator(ASimulatorDecorator):
             output += probampli*reduced_out_state
         return output
 
-    def _simulate_losses_with_beam_splitters(self, components: List) -> ACircuit:
+    def _simulate_losses_with_beam_splitters(self, components: list) -> ACircuit:
         output = []
         can_output_circuit = True
         next_free_mode = self._original_m
