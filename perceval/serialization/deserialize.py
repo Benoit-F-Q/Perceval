@@ -28,7 +28,6 @@
 # SOFTWARE.
 from base64 import b64decode
 from os import path
-from typing import Union
 import json
 from zlib import decompress
 

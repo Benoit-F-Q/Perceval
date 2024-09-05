@@ -33,7 +33,6 @@ import copy
 import random
 
 from abc import ABC, abstractmethod
-from typing import Callable, Optional, Union, Tuple, Type, List
 
 import numpy as np
 import sympy as sp

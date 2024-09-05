@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 import os
-from typing import Union
 
 from perceval.utils.logging import logger, channel
 

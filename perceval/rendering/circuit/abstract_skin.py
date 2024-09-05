@@ -29,7 +29,6 @@
 
 from abc import ABC, abstractmethod
 from enum import Enum
-from typing import Callable, Tuple
 from multipledispatch import dispatch
 
 from perceval.components import ACircuit, AProcessor, PERM

@@ -28,7 +28,7 @@
 # SOFTWARE.
 import math
 import time
-from typing import Callable, Dict, Tuple
+import sys
 
 from perceval.backends import ASamplingBackend
 from perceval.components import ACircuit

@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 import math
-from typing import Callable, List, Optional, Tuple
 
 from .linear_circuit import ACircuit, Circuit
 

@@ -27,8 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import Type
-
 from .abstract_skin import ASkin, ModeStyle
 from .phys_skin import PhysSkin
 from .symb_skin import SymbSkin

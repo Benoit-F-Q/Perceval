@@ -27,7 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import uuid
-from typing import Dict, List, Any
 from multipledispatch import dispatch
 
 from perceval.components.abstract_processor import AProcessor, ProcessorType

@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 import math
-from typing import List, Tuple
 
 import exqalibur as xq
 from . import NaiveBackend

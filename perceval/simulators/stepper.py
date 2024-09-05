@@ -27,7 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 from collections import defaultdict
-from typing import List, Union, Callable, Dict
 import copy
 
 from perceval.utils import StateVector, BasicState, BSDistribution, SVDistribution, allstate_iterator

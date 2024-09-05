@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 from ._validated_params import AValidatedParam, ValidatedBool, ValidatedFloat
-from typing import Dict
 
 
 class NoiseModel:

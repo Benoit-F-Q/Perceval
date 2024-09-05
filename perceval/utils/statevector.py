@@ -35,7 +35,6 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 from copy import copy
 from multipledispatch import dispatch
-from typing import Dict, List, Union, Optional
 
 import exqalibur as xq
 from perceval.utils.logging import logger, channel

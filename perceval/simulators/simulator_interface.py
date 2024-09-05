@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 from abc import ABC, abstractmethod
-from typing import Callable, Dict
 
 from perceval.components import ACircuit
 from perceval.utils import BSDistribution, StateVector, SVDistribution, PostSelect, post_select_distribution, \

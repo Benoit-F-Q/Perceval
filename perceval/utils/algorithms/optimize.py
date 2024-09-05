@@ -27,7 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import Optional, Callable, List
 from perceval.components.linear_circuit import ACircuit
 from perceval.utils import Matrix, P, global_params
 

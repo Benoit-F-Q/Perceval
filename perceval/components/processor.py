@@ -29,7 +29,6 @@
 
 from multipledispatch import dispatch
 from numpy import inf
-from typing import Dict, Callable, Union, List
 
 from perceval.backends import ABackend, ASamplingBackend, BACKEND_LIST
 from perceval.utils import SVDistribution, BSDistribution, BasicState, StateVector, LogicalState, NoiseModel

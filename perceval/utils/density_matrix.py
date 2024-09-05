@@ -30,7 +30,6 @@
 import random
 from copy import copy
 from math import comb, sqrt
-from typing import Union, Optional, List, Tuple
 
 import numpy as np
 from numpy import conj

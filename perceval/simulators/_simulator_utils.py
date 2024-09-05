@@ -31,7 +31,6 @@ from perceval.utils import BasicState, BSDistribution, StateVector, Annotation
 from perceval.components import Circuit
 from copy import copy
 from math import sqrt
-from typing import List
 
 
 def _to_bsd(sv: StateVector) -> BSDistribution:

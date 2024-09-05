@@ -44,7 +44,8 @@ from multipledispatch import dispatch
 import networkx as nx
 import sympy as sp
 from tabulate import tabulate
-from typing import Union
+import matplotlib.pyplot as plt
+import sympy as sp
 
 from perceval.algorithm import Analyzer, AProcessTomography
 from perceval.components import ACircuit, Circuit, AProcessor, non_unitary_components as nl

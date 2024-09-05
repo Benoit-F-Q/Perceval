@@ -33,7 +33,6 @@ from perceval.components import ACircuit, PERM, TD
 from perceval.utils import BasicState, BSDistribution, StateVector, global_params
 
 from enum import Enum
-from typing import List, Tuple
 
 
 class _CType(Enum):

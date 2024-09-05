@@ -30,7 +30,6 @@
 from abc import ABC, abstractmethod
 import copy
 import math
-from typing import Any, Tuple
 
 from perceval.rendering.circuit import ASkin, ModeStyle
 from perceval.rendering.format import Format

@@ -29,7 +29,6 @@
 
 import json
 import time
-from typing import Any
 from requests.exceptions import HTTPError, ConnectionError
 
 from .job import Job

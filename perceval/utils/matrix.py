@@ -34,7 +34,6 @@ import re
 
 from abc import ABC, abstractmethod
 from scipy.linalg import sqrtm, block_diag, svd
-from typing import Iterator, Optional, Union, Tuple
 import numpy as np
 import sympy as sp
 

@@ -30,7 +30,6 @@
 import random
 import sympy as sp
 
-from typing import Tuple
 
 
 class Parameter:

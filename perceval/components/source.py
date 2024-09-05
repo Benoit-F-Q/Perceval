@@ -31,7 +31,6 @@ import math
 
 from perceval.utils import SVDistribution, StateVector, BasicState, anonymize_annotations, NoiseModel, global_params
 from perceval.utils.logging import logger, channel
-from typing import Dict, List, Union
 
 
 class Source:

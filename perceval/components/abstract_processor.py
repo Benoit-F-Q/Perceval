@@ -31,7 +31,6 @@ import copy
 from abc import ABC, abstractmethod
 from enum import Enum
 from multipledispatch import dispatch
-from typing import Any, Dict, List, Union, Tuple
 
 from perceval.components.linear_circuit import Circuit, ACircuit
 from perceval.utils import BasicState, Parameter, PostSelect, postselect_independent, LogicalState, NoiseModel

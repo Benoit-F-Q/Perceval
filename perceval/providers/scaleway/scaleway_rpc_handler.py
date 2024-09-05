@@ -33,7 +33,6 @@ import json
 
 from datetime import datetime, timedelta
 from requests import HTTPError
-from typing import Union
 from enum import Enum
 
 _PROVIDER_NAME = "quandela"

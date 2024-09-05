@@ -34,7 +34,6 @@ from perceval.utils.logging import logger, channel
 import exqalibur as xq
 import math
 import numpy as np
-from typing import Dict, List
 
 
 class _Path:

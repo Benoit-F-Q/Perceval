@@ -31,7 +31,6 @@ from .statevector import BasicState, BSDistribution, StateVector
 
 import json
 import re
-from typing import Callable, List, Tuple
 
 
 class PostSelect:

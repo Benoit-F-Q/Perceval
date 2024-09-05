@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 from abc import ABC, abstractmethod
-from typing import Dict, Callable
 
 from perceval.utils.logging import logger, channel
 

@@ -28,7 +28,6 @@
 # SOFTWARE.
 
 from abc import ABC, abstractmethod
-from typing import List, Union
 from enum import Enum
 
 from perceval.utils import BasicState, Encoding, LogicalState

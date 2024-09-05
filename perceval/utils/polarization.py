@@ -32,7 +32,6 @@ from __future__ import annotations
 import numpy as np
 import re
 import sympy as sp
-from typing import Union, Tuple, Any
 
 from .statevector import BasicState
 from .matrix import Matrix

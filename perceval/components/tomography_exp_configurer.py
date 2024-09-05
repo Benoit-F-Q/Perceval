@@ -27,7 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import List
 from .processor import AProcessor
 from ._pauli import PauliType, PauliEigenStateType, get_pauli_eigen_state_prep_circ, get_pauli_basis_measurement_circuit
 

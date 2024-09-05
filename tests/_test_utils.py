@@ -31,7 +31,6 @@ import re
 import math
 import pytest
 
-from typing import Type
 from pathlib import Path
 from unittest.mock import MagicMock
 

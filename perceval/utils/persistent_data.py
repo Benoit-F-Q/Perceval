@@ -30,7 +30,6 @@
 import os
 import json
 import warnings
-from typing import Union
 from platformdirs import PlatformDirs
 
 from .metadata import PMetadata
@@ -38,18 +37,6 @@ from ._enums import FileFormat
 
 _CONFIG_FILE_NAME = "config.json"
 
-
-def _removesuffix(data, suffix):
-    """Replace the python 3.9 method removesuffix
-
-    :param data: data on which remove suffix
-    :param suffix: suffix to remove
-    :return: data
-    """
-    if data.endswith(suffix):
-        data = data[:-len(suffix)]
-
-    return data
 
 
 class PersistentData:
@@ -169,12 +156,12 @@ class PersistentData:
         if file_format == FileFormat.BINARY:
             with open(file_path, "r+b") as file:
                 data = file.read()
-            data = _removesuffix(data, b'\n')
-            data = _removesuffix(data, b' ')
+            data = data.removesuffix(b'\n')
+            data = data.removesuffix(b' ')
         elif file_format == FileFormat.TEXT:
             with open(file_path, "r+t", encoding="UTF-8") as file:
                 data = str(file.read())
-            data = _removesuffix(data, '\n').rstrip()
+            data = data.removesuffix('\n').rstrip()
         else:
             raise NotImplementedError(f"format {format} is not supported")
         return data

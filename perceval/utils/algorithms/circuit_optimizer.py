@@ -27,8 +27,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import Callable, Tuple, Union
-
 import exqalibur as xq
 from perceval.components import ACircuit, Circuit, GenericInterferometer, BS, PS, catalog
 from perceval.utils import Matrix, P

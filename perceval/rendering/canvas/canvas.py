@@ -29,7 +29,6 @@
 
 from __future__ import annotations
 from abc import ABC
-from typing import List, Union, Tuple
 
 
 class Canvas(ABC):
